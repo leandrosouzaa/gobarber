@@ -24,6 +24,10 @@ export default class CreateUsers1586904740732 implements MigrationInterface {
                   isUnique: true,
                },
                {
+                  name: 'password',
+                  type: 'varchar',
+               },
+               {
                   name: 'created-at',
                   type: 'timestamp',
                   default: 'now()',
