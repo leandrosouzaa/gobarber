@@ -27,6 +27,9 @@
       "no-console": "off",
       "prettier/prettier": "error",
       "@typescript-eslint/camelcase":"off",
+      "@typescript-eslint/no-unused-vars":["error", {
+         "argsIgnorePattern": "_"
+      }],
       "import/extensions": [
          "error",
          "ignorePackages",
