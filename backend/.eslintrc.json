@@ -26,6 +26,7 @@
       "class-methods-use-this":"off",
       "no-console": "off",
       "prettier/prettier": "error",
+      "@typescript-eslint/camelcase":"off",
       "import/extensions": [
          "error",
          "ignorePackages",
