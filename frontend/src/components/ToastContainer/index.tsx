@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { FiAlertCircle, FiXCircle } from 'react-icons/fi';
 
 import { Container, Toast } from './styles';
