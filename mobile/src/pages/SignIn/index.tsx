@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import {
    Image,
@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 
 import { Button, Input } from '../../components';
 import {
@@ -23,7 +25,12 @@ import {
 import logoImg from '../../assets/logo.png';
 
 const SignIn: React.FC = () => {
+   const formRef = useRef<FormHandles>(null);
    const navigation = useNavigation();
+
+   const handleSignIn = useCallback((data: object) => {
+      console.log(data);
+   }, []);
    return (
       <>
          <KeyboardAvoidingView
@@ -41,17 +48,36 @@ const SignIn: React.FC = () => {
                   <View>
                      <Title>Faça seu logon</Title>
                   </View>
+                  <Form ref={formRef} onSubmit={handleSignIn}>
+                     <Input
+                        name="email"
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        keyboardType="email-address"
+                        icon="mail"
+                        placeholder="E-mail"
+                        returnKeyType="next"
+                     />
+                     <Input
+                        name="password"
+                        icon="lock"
+                        placeholder="Senha"
+                        secureTextEntry
+                        returnKeyType="send"
+                        onSubmitEditing={() => {
+                           formRef.current?.submitForm();
+                        }}
+                     />
 
-                  <Input name="email" icon="mail" placeholder="E-mail" />
-                  <Input name="password" icon="lock" placeholder="Senha" />
+                     <Button
+                        onPress={() => {
+                           formRef.current?.submitForm();
+                        }}
+                     >
+                        Entrar
+                     </Button>
+                  </Form>
 
-                  <Button
-                     onPress={() => {
-                        console.log('foi');
-                     }}
-                  >
-                     Entrar
-                  </Button>
                   <ForgotPassword
                      onPress={() => {
                         console.log('foi');
