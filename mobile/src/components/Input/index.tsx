@@ -10,7 +10,7 @@ import React, {
 import { TextInputProps } from 'react-native';
 import { useField } from '@unform/core';
 
-import { Container, TextInput, Icon } from './styles';
+import { Container, TextInput, Icon, Error } from './styles';
 
 interface InputProps extends TextInputProps {
    name: string;
@@ -72,7 +72,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
    }, [fieldName, registerField]);
 
    return (
-      <Container isFocused={isFocused}>
+      <Container isErrored={!!error} isFocused={isFocused}>
          {icon && (
             <Icon
                name={icon}
@@ -92,6 +92,17 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
             }}
             {...rest}
          />
+
+         {error && (
+            <Error>
+               <Icon
+                  style={{ marginRight: 0 }}
+                  name="alert-circle"
+                  color="#c53030"
+                  size={20}
+               />
+            </Error>
+         )}
       </Container>
    );
 };
