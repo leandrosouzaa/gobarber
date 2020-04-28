@@ -15,7 +15,7 @@ import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import api from '../../services/api.';
+import api from '../../services/api';
 import getValidationErros from '../../utils/getValidationErros';
 import { Button, Input } from '../../components';
 import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
