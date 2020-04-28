@@ -15,6 +15,7 @@ import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
+import api from '../../services/api.';
 import getValidationErros from '../../utils/getValidationErros';
 import { Button, Input } from '../../components';
 import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
@@ -37,48 +38,51 @@ const SignUp: React.FC = () => {
 
    const navigation = useNavigation();
 
-   const handleSignUp = useCallback(async (data: SignUpFormData): Promise<
-      void
-   > => {
-      try {
-         formRef.current?.setErrors({});
+   const handleSignUp = useCallback(
+      async (data: SignUpFormData): Promise<void> => {
+         try {
+            formRef.current?.setErrors({});
 
-         const schema = Yup.object().shape({
-            name: Yup.string().required('Nome obrigatório'),
-            email: Yup.string()
-               .required('E-mail obrigatório')
-               .email('Digite um e-mail válido'),
-            password: Yup.string().min(6, 'No mínimo 6 dígitos'),
-            confirmPassword: Yup.string().oneOf(
-               [Yup.ref('password'), null],
-               'As senhas não coincidem',
-            ),
-         });
+            const schema = Yup.object().shape({
+               name: Yup.string().required('Nome obrigatório'),
+               email: Yup.string()
+                  .required('E-mail obrigatório')
+                  .email('Digite um e-mail válido'),
+               password: Yup.string().min(6, 'No mínimo 6 dígitos'),
+               confirmPassword: Yup.string().oneOf(
+                  [Yup.ref('password'), null],
+                  'As senhas não coincidem',
+               ),
+            });
 
-         await schema.validate(data, {
-            abortEarly: false,
-         });
+            await schema.validate(data, {
+               abortEarly: false,
+            });
 
-         // await api.post('/users', data);
+            await api.post('/users', data);
 
-         Alert.alert(
-            'Cadastro realizado!',
-            'Vocẽ já pode fazer logon no GoBarber',
-         );
-      } catch (err) {
-         if (err instanceof Yup.ValidationError) {
-            const errors = getValidationErros(err);
+            Alert.alert(
+               'Cadastro realizado!',
+               'Vocẽ já pode fazer logon no GoBarber!',
+            );
 
-            formRef.current?.setErrors(errors);
-            return;
+            navigation.navigate('SignIn');
+         } catch (err) {
+            if (err instanceof Yup.ValidationError) {
+               const errors = getValidationErros(err);
+
+               formRef.current?.setErrors(errors);
+               return;
+            }
+            console.log(err);
+            Alert.alert(
+               'Aconteceu um erro',
+               'Ocorreu um erro durante o cadastro, tente novamente',
+            );
          }
-
-         Alert.alert(
-            'Aconteceu um erro',
-            'Ocorreu um erro durante o cadastro, tente novamente',
-         );
-      }
-   }, []);
+      },
+      [navigation],
+   );
    return (
       <>
          <KeyboardAvoidingView
