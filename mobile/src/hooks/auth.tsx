@@ -19,6 +19,7 @@ interface AuthContextData {
    signIn(credentials: SignInCredentials): Promise<void>;
    signOut(): void;
    user: object;
+   loading: boolean;
 }
 
 interface AuthState {
@@ -30,6 +31,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
    const [data, setData] = useState<AuthState>({} as AuthState);
+   const [loading, setLoading] = useState(true);
 
    useEffect(() => {
       async function loadStoragedData(): Promise<void> {
@@ -41,10 +43,14 @@ const AuthProvider: React.FC = ({ children }) => {
          if (token[1] && user[1]) {
             setData({ token: token[1], user: JSON.parse(user[1]) });
          }
+
+         console.log(user);
+
+         setLoading(false);
       }
 
       loadStoragedData();
-   }, []);
+   });
 
    const signIn = useCallback(async ({ email, password }) => {
       const response = await api.post('/sessions', {
@@ -53,10 +59,17 @@ const AuthProvider: React.FC = ({ children }) => {
       });
       const { token, user } = response.data;
 
-      await AsyncStorage.multiSet([
-         ['@GoBarber:token', token],
-         ['@GoBarber:user', JSON.stringify(user)],
-      ]);
+      // await AsyncStorage.multiSet([
+      //    ['@GoBarber:token', token],
+      //    ['@GoBarber:user', JSON.stringify(user)],
+      // ]);
+
+      await AsyncStorage.setItem('@GoBarber:token', token);
+      await AsyncStorage.setItem('@GoBarber:user', JSON.stringify(user));
+
+      // const teste = await AsyncStorage.getItem('@GoBarber:token');
+      // console.log(teste);
+
       setData({ token, user });
    }, []);
 
@@ -67,7 +80,9 @@ const AuthProvider: React.FC = ({ children }) => {
    }, []);
 
    return (
-      <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+      <AuthContext.Provider
+         value={{ user: data.user, loading, signIn, signOut }}
+      >
          {children}
       </AuthContext.Provider>
    );
