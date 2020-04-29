@@ -50,7 +50,7 @@ Foram utilizadas as seguintes tecnologias para o desenvolvimento do projeto
 Foram utilizadas as seguintes dependências para o desenvolvimento do projeto
 
     
-## 👨‍🏭 Clonagem e debug
+## 👷‍♂️ Clonagem e debug
 
 
 ## 👨‍💻 Desenvolvedor
