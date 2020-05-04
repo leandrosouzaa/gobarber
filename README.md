@@ -49,26 +49,26 @@ Foram utilizadas as seguintes tecnologias para o desenvolvimento do projeto
 ## 🛠 Dependências
 Foram utilizadas as seguintes dependências para o desenvolvimento do projeto
 - <b>Backend</b>
-  - [express @2.4.3;]()
-    >
-  - [bcrypt @2.4.3;]()
-    >
-  - [cors @2.8.5;]()
-    >
-  - [date-fns @2.12.0;]()
-    >
-  - [jsonwebtoken @8.5.1;]()
-    >
-  - [multer @1.4.2;]()
-    >
-  - [pg @8.0.2;]()
-    >    
-  - [reflext-metadata @0.1.13;]()
-    >
-  - [typeorm @0.2.24;]()
-    >
-  - [uuidv4 @6.0.7]()
-    >    
+  - [express @2.4.3](https://expressjs.com);
+    >Fast, unopinionated, minimalist web framework for node. https://expressjs.com
+  - [bcrypt @2.4.3](https://github.com/kelektiv/node.bcrypt.js);
+    >A library to help you hash passwords.
+  - [cors @2.8.5](https://github.com/expressjs/cors);
+    >Node.js CORS middleware
+  - [date-fns @2.12.0](https://github.com/date-fns/date-fns);
+    >⏳ Modern JavaScript date utility library ⌛️ https://date-fns.org
+  - [jsonwebtoken @8.5.1](https://github.com/auth0/node-jsonwebtoken);
+    >JsonWebToken implementation for node.js http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html
+  - [multer @1.4.2](https://github.com/expressjs/multer);
+    >Node.js middleware for handling `multipart/form-data`.
+  - [pg @8.0.2](https://github.com/brianc/node-postgres);
+    >PostgreSQL client for node.js. https://node-postgres.com    
+  - [reflect-metadata @0.1.13](https://github.com/rbuckton/reflect-metadata);
+    >Prototype for a Metadata Reflection API for ECMAScript https://rbuckton.github.io/reflect-me…
+  - [typeorm @0.2.24](https://github.com/typeorm/typeorm);
+    >ORM for TypeScript and JavaScript (ES7, ES6, ES5). Supports MySQL, PostgreSQL, MariaDB, SQLite, MS SQL Server, Oracle, SAP Hana, WebSQL databases. Works in NodeJS, Browser, Ionic, Cordova and Electron platforms. http://typeorm.io
+  - [uuidv4 @6.0.7](https://github.com/thenativeweb/uuidv4);
+    >uuidv4 creates v4 UUIDs.  
 
     
 ## 👷‍♂️ Clonagem e debug
