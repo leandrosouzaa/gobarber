@@ -1,7 +1,7 @@
 <h1 align="center">
   <img alt="Aircnc" title="#logo" src="frontend/src/assets/logo-black.svg" height="180px" />
 </h1>
-<h4 align="center">💇‍♂️ ✂️ Awesome Haircuts & Shaves ✂️ 💇‍♂️</h4>
+<h4 align="center">✂️ Awesome Haircuts & Shaves ✂️</h4>
 
 <p align="center">
   <img alt="GitHub language" src="https://img.shields.io/github/languages/top/leandrosouzaa/gobarber">
@@ -48,6 +48,27 @@ Foram utilizadas as seguintes tecnologias para o desenvolvimento do projeto
    
 ## 🛠 Dependências
 Foram utilizadas as seguintes dependências para o desenvolvimento do projeto
+- <b>Backend</b>
+  - [express @2.4.3;]()
+    >
+  - [bcrypt @2.4.3;]()
+    >
+  - [cors @2.8.5;]()
+    >
+  - [date-fns @2.12.0;]()
+    >
+  - [jsonwebtoken @8.5.1;]()
+    >
+  - [multer @1.4.2;]()
+    >
+  - [pg @8.0.2;]()
+    >    
+  - [reflext-metadata @0.1.13;]()
+    >
+  - [typeorm @0.2.24;]()
+    >
+  - [uuidv4 @6.0.7]()
+    >    
 
     
 ## 👷‍♂️ Clonagem e debug
