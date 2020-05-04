@@ -78,7 +78,18 @@ Foram utilizadas as seguintes dependências para o desenvolvimento do projeto
     >DOM bindings for React Router.
   - [react-icons @3.10.0](https://react-icons.github.io/react-icons/);
     >Include popular icons in your React projects easily with react-icons, which utilizes ES6 imports that allows you to          include only the icons that your project is using.
-
+  - [styled-components @5.1.0](https://styled-components.com);
+    >Use the best bits of ES6 and CSS to style your apps without stress 💅.
+  - [polished @3.5.2](https://polished.js.org);
+    >A lightweight toolset for writing styles in JavaScript.
+  - [uuidv4 @6.0.7](https://github.com/thenativeweb/uuidv4);
+    >uuidv4 creates v4 UUIDs.      
+  - [yup @0.28.4](https://github.com/jquense/yup);
+    >Dead simple Object schema validation  
+  - [react-spring @8.0.27](https://github.com/react-spring/react-spring);
+    >✌️ A spring physics based React animation library https://www.react-spring.io
+  - [unform (core and web)](https://github.com/Rocketseat/unform);
+    >Easy peasy highly scalable ReactJS & React Native forms! 🚀 https://unform.dev
     
 ## 👷‍♂️ Clonagem e debug
 
