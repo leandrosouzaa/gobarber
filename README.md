@@ -66,9 +66,18 @@ Foram utilizadas as seguintes dependências para o desenvolvimento do projeto
   - [reflect-metadata @0.1.13](https://github.com/rbuckton/reflect-metadata);
     >Prototype for a Metadata Reflection API for ECMAScript https://rbuckton.github.io/reflect-me…
   - [typeorm @0.2.24](https://github.com/typeorm/typeorm);
-    >ORM for TypeScript and JavaScript (ES7, ES6, ES5). Supports MySQL, PostgreSQL, MariaDB, SQLite, MS SQL Server, Oracle, SAP Hana, WebSQL databases. Works in NodeJS, Browser, Ionic, Cordova and Electron platforms. http://typeorm.io
+    >ORM for TypeScript and JavaScript (ES7, ES6, ES5). Supports MySQL, PostgreSQL, MariaDB, SQLite, MS SQL Server, Oracle,      SAP Hana, WebSQL databases. Works in NodeJS, Browser, Ionic, Cordova and Electron platforms. http://typeorm.io
   - [uuidv4 @6.0.7](https://github.com/thenativeweb/uuidv4);
     >uuidv4 creates v4 UUIDs.  
+- <b>Frontend (Web)</b>
+  - [react @16.13.1](https://reactjs.org);
+    >A JavaScript library for building user interfaces
+  - [axios @0.19.2](https://github.com/axios/axios);
+    >Promise based HTTP client for the browser and node.js    
+  - [react-router-dom @5.1.2](https://reactjs.org);
+    >DOM bindings for React Router.
+  - [react-icons @3.10.0](https://react-icons.github.io/react-icons/);
+    >Include popular icons in your React projects easily with react-icons, which utilizes ES6 imports that allows you to          include only the icons that your project is using.
 
     
 ## 👷‍♂️ Clonagem e debug
