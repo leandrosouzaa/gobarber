@@ -92,7 +92,7 @@ Foram utilizadas as seguintes dependências para o desenvolvimento do projeto
     >Easy peasy highly scalable ReactJS & React Native forms! 🚀 https://unform.dev
     
 ## 👷‍♂️ Clonagem e debug
-
+  {...}
 
 ## 👨‍💻 Desenvolvedor
  <table>
