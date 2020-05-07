@@ -1,5 +1,4 @@
 # Recuperação de Senha
-
   **RF**
       - O usuário deve poder recuperar sua senha informando o seu e-mail;
       - O usuário deve receber um e-mail con instruções de recuperação de senha;
