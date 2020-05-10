@@ -22,6 +22,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
    public async create({
       date,
       provider_id,
+      user_id,
    }: ICreateAppointmentDTO): Promise<Appointment> {
       const appointment = new Appointment();
 
@@ -29,6 +30,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
          id: uuid(),
          date,
          provider_id,
+         user_id,
       });
 
       this.appointments.push(appointment);
