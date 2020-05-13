@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
@@ -22,9 +23,7 @@ class ShowProfileService {
          throw new AppError('User not found');
       }
 
-      delete user.password;
-
-      return user;
+      return classToClass(user);
    }
 }
 
