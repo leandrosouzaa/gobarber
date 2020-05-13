@@ -11,7 +11,12 @@ interface IRequest {
    day: number;
 }
 
-injectable();
+type IResponse = Array<{
+   hour: number;
+   available: boolean;
+}>;
+
+@injectable()
 class ListProviderAppointmentsService {
    constructor(
       @inject('AppointmentsRepository')
@@ -24,20 +29,16 @@ class ListProviderAppointmentsService {
       year,
       day,
    }: IRequest): Promise<Appointment[]> {
-      const appointments = await this.appointmentsRepository.findAllInDayFromProvider(
+      const appointmenst = await this.appointmentsRepository.findAllInDayFromProvider(
          {
-            day,
-            month,
-            year,
             provider_id,
+            year,
+            month,
+            day,
          },
       );
 
-      console.log(provider_id, month, year, day);
-
-      console.log(appointments);
-
-      return appointments;
+      return appointmenst;
    }
 }
 
