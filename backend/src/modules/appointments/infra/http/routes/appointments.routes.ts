@@ -3,21 +3,16 @@ import { Router } from 'express';
 import AppointmentsController from '@modules/appointments/infra/http/controllers/AppointmentsController';
 
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
+import ProviderAppointmentsController from '@modules/appointments/infra/http/controllers/ProviderAppointmentsController';
 
 const appointmentsRouter = Router();
 const appointmensController = new AppointmentsController();
+const providerAppointmentsController = new ProviderAppointmentsController();
 
 appointmentsRouter.use(ensureAuthenticated);
 
-// appointmentsRouter.get('/', async (req, res) => {
-// const appointmentsRepository = new AppointmentsRepository();
-
-//    const appointmentsRepository = getCustomRepository(AppontimentsRepository);
-//    const appointments = await appointmentsRepository.find();
-
-//    return res.json(appointments);
-// });
-
 appointmentsRouter.post('/', appointmensController.create);
+
+appointmentsRouter.get('/me', providerAppointmentsController.index);
 
 export default appointmentsRouter;
