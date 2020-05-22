@@ -4,8 +4,9 @@ import { FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
+import api from '../../services/api';
 import { useToast } from '../../hooks/toast';
 import getValidationErros from '../../utils/getValidationErrors';
 import { Input, Button } from '../../components';
@@ -20,6 +21,7 @@ interface ResetPasswordFormData {
 
 const SignIn: React.FC = () => {
    const history = useHistory();
+   const location = useLocation();
 
    const formRef = useRef<FormHandles>(null);
 
@@ -42,7 +44,20 @@ const SignIn: React.FC = () => {
                abortEarly: false,
             });
 
-            history.push('/signin');
+            const { password, password_confirmation } = data;
+            const token = location.search.replace('?token=', '');
+
+            if (!token) {
+               throw new Error();
+            }
+
+            await api.post('/password/reset-password', {
+               password,
+               password_confirmation,
+               token,
+            });
+
+            history.push('/');
          } catch (err) {
             if (err instanceof Yup.ValidationError) {
                const errors = getValidationErros(err);
@@ -59,7 +74,7 @@ const SignIn: React.FC = () => {
             });
          }
       },
-      [addToast, history],
+      [addToast, history, location.search],
    );
 
    return (
