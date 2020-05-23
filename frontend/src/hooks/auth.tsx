@@ -7,15 +7,21 @@ interface SignInCredentials {
    email: string;
 }
 
+interface User {
+   id: string;
+   avatar_url: string;
+   name: string;
+}
+
 interface AuthContextData {
    signIn(credentials: SignInCredentials): Promise<void>;
    signOut(): void;
-   user: object;
+   user: User;
 }
 
 interface AuthState {
    token: string;
-   user: object;
+   user: User;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
