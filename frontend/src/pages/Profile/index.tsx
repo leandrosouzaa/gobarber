@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, ChangeEvent } from 'react';
+import React, { useCallback, useRef, ChangeEvent, useState } from 'react';
 
 import { FiMail, FiLock, FiUser, FiCamera, FiArrowLeft } from 'react-icons/fi';
 import { Form } from '@unform/web';
@@ -22,6 +22,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
+   const [loading, setLoading] = useState(false);
    const { addToast } = useToast();
    const { user, updateUser } = useAuth();
    const history = useHistory();
@@ -31,6 +32,7 @@ const Profile: React.FC = () => {
    const handleSubmit = useCallback(
       async (data: ProfileFormData): Promise<void> => {
          try {
+            setLoading(true);
             formRef.current?.setErrors({});
 
             const schema = Yup.object().shape({
@@ -40,13 +42,15 @@ const Profile: React.FC = () => {
                   .email('Digite um e-mail válido'),
                old_password: Yup.string(),
                password: Yup.string().when('old_password', {
-                  is: (val) => !!val.lenght,
-                  then: Yup.string().required('Campo obrigatório'),
+                  is: (val) => !!val.length,
+                  then: Yup.string()
+                     .required('Campo obrigatório')
+                     .min(6, 'No mínimo 6 dígitos'),
                   otherwise: Yup.string(),
                }),
                password_confirmation: Yup.string()
                   .when('old_password', {
-                     is: (val) => !!val.lenght,
+                     is: (val) => !!val.length,
                      then: Yup.string().required('Campo obrigatório'),
                      otherwise: Yup.string(),
                   })
@@ -86,7 +90,7 @@ const Profile: React.FC = () => {
 
             addToast({
                type: 'success',
-               title: 'Perfil realizado!',
+               title: 'Perfil atualizado!',
                description: 'Suas informações foram atualizadas com sucesso!',
             });
 
@@ -105,6 +109,8 @@ const Profile: React.FC = () => {
                description:
                   'Ocorreu um erro durante a atualização do perfil, tente novamente',
             });
+         } finally {
+            setLoading(false);
          }
       },
       [addToast, history, updateUser],
@@ -181,7 +187,9 @@ const Profile: React.FC = () => {
                   placeholder="Confirmar senha"
                />
 
-               <Button type="submit">Confirmar Mudanças</Button>
+               <Button loading={loading} type="submit">
+                  Confirmar Mudanças
+               </Button>
             </Form>
          </Content>
       </Container>

@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 
 import { FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
@@ -20,6 +20,7 @@ interface ResetPasswordFormData {
 }
 
 const SignIn: React.FC = () => {
+   const [loading, setLoading] = useState(false);
    const history = useHistory();
    const location = useLocation();
 
@@ -30,6 +31,7 @@ const SignIn: React.FC = () => {
    const handleSubmit = useCallback(
       async (data: ResetPasswordFormData): Promise<void> => {
          try {
+            setLoading(true);
             formRef.current?.setErrors({});
 
             const schema = Yup.object().shape({
@@ -72,6 +74,8 @@ const SignIn: React.FC = () => {
                description:
                   'Ocorreu um erro ao resetar sua senha, tente novamente',
             });
+         } finally {
+            setLoading(false);
          }
       },
       [addToast, history, location.search],
@@ -90,14 +94,16 @@ const SignIn: React.FC = () => {
                      type="password"
                      placeholder="Sua nova senha Secreta"
                   />
-
                   <Input
                      icon={FiLock}
                      name="password_confirmation"
                      type="password"
                      placeholder="Confirme sua nova senha"
                   />
-                  <Button type="submit">Alterar Senha</Button>
+
+                  <Button loading={loading} type="submit">
+                     Alterar Senha
+                  </Button>
                </Form>
             </AnimationContainer>
          </Content>
