@@ -27,7 +27,7 @@ const Input: React.FC<InputProps> = ({
    const inputRef = useRef<HTMLInputElement>(null);
    const [isFocused, setIsFocused] = useState(false);
    const [isFilled, setIsFilled] = useState(false);
-   const { fieldName, error, registerField } = useField(name);
+   const { fieldName, error, registerField, defaultValue } = useField(name);
 
    const handleInputBlur = useCallback(() => {
       setIsFocused(false);
@@ -56,6 +56,7 @@ const Input: React.FC<InputProps> = ({
          <input
             onFocus={() => handleInputFocus()}
             onBlur={() => handleInputBlur()}
+            defaultValue={defaultValue}
             ref={inputRef}
             {...rest}
          />
