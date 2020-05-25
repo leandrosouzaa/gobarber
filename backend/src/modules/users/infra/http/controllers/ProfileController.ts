@@ -30,6 +30,6 @@ export default class UserAvatarController {
          password,
       });
 
-      return res.json(user);
+      return res.json(classToClass(user));
    }
 }
