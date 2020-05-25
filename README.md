@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Aircnc" title="#logo" src="frontend/src/assets/logo-black.svg" height="180px" />
+  <img alt="GoBarber" title="#logo" src="frontend/src/assets/logo-black.svg" height="180px" />
 </h1>
 <h4 align="center">✂️ Awesome Haircuts & Shaves ✂️</h4>
 
