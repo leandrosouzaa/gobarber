@@ -1,6 +1,13 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import React, {
+   createContext,
+   useCallback,
+   useState,
+   useContext,
+   useEffect,
+} from 'react';
 
 import api from '../services/api';
+import { useToast } from './toast';
 
 interface SignInCredentials {
    password: string;
@@ -29,6 +36,7 @@ interface AuthState {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
+   const { addToast } = useToast();
    const [data, setData] = useState<AuthState>(() => {
       const token = localStorage.getItem('@GoBarber:token');
       const user = localStorage.getItem('@GoBarber:user');
@@ -75,6 +83,18 @@ const AuthProvider: React.FC = ({ children }) => {
       },
       [data.token, setData],
    );
+
+   useEffect(() => {
+      if (!data.token) {
+         return;
+      }
+
+      api.get('/sessions/validate').catch(() => {
+         signOut();
+
+         alert('Sessão expirada, entre novamente');
+      });
+   }, [addToast, data.token, signOut]);
 
    return (
       <AuthContext.Provider
