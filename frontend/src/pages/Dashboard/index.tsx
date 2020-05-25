@@ -4,7 +4,7 @@ import { isToday, isAfter, format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-
+import { Link } from 'react-router-dom';
 import { FiPower, FiClock } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/auth';
@@ -141,7 +141,9 @@ const Dashboard: React.FC = () => {
                   <img src={user.avatar_url} alt={user.name} />
                   <div>
                      <span>Bem Vindo</span>
-                     <strong>{user.name}</strong>
+                     <Link to="/profile">
+                        <strong>{user.name}</strong>
+                     </Link>
                   </div>
                </Profile>
 
