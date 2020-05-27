@@ -6,8 +6,8 @@ import { Container } from './styles';
 
 const NextAppointmentLoader: React.FC = () => {
    return (
-      <Container>
-         <SkeletonTheme color="#494653" highlightColor="#555161">
+      <SkeletonTheme color="#494653" highlightColor="#555161">
+         <Container>
             <div className="content">
                <Skeleton width="80px" height="80px" circle />
 
@@ -22,8 +22,8 @@ const NextAppointmentLoader: React.FC = () => {
                   <Skeleton width="40px" />
                </span>
             </div>
-         </SkeletonTheme>
-      </Container>
+         </Container>
+      </SkeletonTheme>
    );
 };
 
