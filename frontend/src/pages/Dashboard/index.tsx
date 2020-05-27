@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { FiPower, FiClock } from 'react-icons/fi';
 
 import NextAppointmentLoader from '../../components/Loadings/NextAppointmentLoader';
+import AppointmentLoader from '../../components/Loadings/AppointmentLoader';
+
 import { useAuth } from '../../hooks/auth';
 import {
    Container,
@@ -190,7 +192,14 @@ const Dashboard: React.FC = () => {
                <Section>
                   <strong>Manhã</strong>
 
-                  {morningAppointments.length === 0 && (
+                  {loading && (
+                     <>
+                        <AppointmentLoader />
+                        <AppointmentLoader />
+                     </>
+                  )}
+
+                  {morningAppointments.length === 0 && !loading && (
                      <p>Nenhum agendamento neste período</p>
                   )}
 
@@ -216,8 +225,15 @@ const Dashboard: React.FC = () => {
                <Section>
                   <strong>Tarde</strong>
 
-                  {afternoonAppointments.length === 0 && (
+                  {afternoonAppointments.length === 0 && !loading && (
                      <p>Nenhum agendamento neste período</p>
+                  )}
+
+                  {loading && (
+                     <>
+                        <AppointmentLoader />
+                        <AppointmentLoader />
+                     </>
                   )}
 
                   {afternoonAppointments.map((appointment) => (
