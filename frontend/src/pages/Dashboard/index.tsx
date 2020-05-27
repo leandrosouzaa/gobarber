@@ -7,6 +7,7 @@ import 'react-day-picker/lib/style.css';
 import { Link } from 'react-router-dom';
 import { FiPower, FiClock } from 'react-icons/fi';
 
+import NextAppointmentLoader from '../../components/Loadings/NextAppointmentLoader';
 import { useAuth } from '../../hooks/auth';
 import {
    Container,
@@ -42,6 +43,7 @@ interface Appointment {
 const Dashboard: React.FC = () => {
    const { signOut, user } = useAuth();
 
+   const [loading, setLoading] = useState(false);
    const [selectedDate, setSelectedDate] = useState(new Date());
    const [currentMonth, setCurrentMonth] = useState(new Date());
    const [monthAvailability, setMonthAvailability] = useState(
@@ -63,6 +65,8 @@ const Dashboard: React.FC = () => {
    }, []);
 
    useEffect(() => {
+      setLoading(true);
+
       api.get(`/providers/${user.id}/month-availability`, {
          params: {
             year: currentMonth.getFullYear(),
@@ -108,7 +112,8 @@ const Dashboard: React.FC = () => {
                hourFormatted: format(parseISO(appointment.date), 'HH:mm'),
             };
          });
-
+         setTimeout(3000);
+         setLoading(false);
          setAppointments(appointmentsFormatted);
       });
    }, [selectedDate]);
@@ -161,6 +166,8 @@ const Dashboard: React.FC = () => {
                   <span>{selectedDateAsText}</span>
                   <span>{selectWeekDay}</span>
                </p>
+
+               {loading && <NextAppointmentLoader />}
 
                {isToday(selectedDate) && nextAppointment && (
                   <NextAppointment>
