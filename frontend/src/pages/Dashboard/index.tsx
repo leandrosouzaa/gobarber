@@ -112,7 +112,6 @@ const Dashboard: React.FC = () => {
                hourFormatted: format(parseISO(appointment.date), 'HH:mm'),
             };
          });
-         setTimeout(3000);
          setLoading(false);
          setAppointments(appointmentsFormatted);
       });
