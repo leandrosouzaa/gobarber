@@ -4,8 +4,9 @@ import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
 import api from '../../services/api';
 import getValidationErros from '../../utils/getValidationErrors';
@@ -21,8 +22,8 @@ interface SignUpFormData {
 }
 
 const SignUp: React.FC = () => {
+   const { signIn } = useAuth();
    const { addToast } = useToast();
-   const history = useHistory();
 
    const formRef = useRef<FormHandles>(null);
 
@@ -51,7 +52,7 @@ const SignUp: React.FC = () => {
                description: 'Você já pode fazer seu logon no GoBarber',
             });
 
-            history.push('/');
+            signIn(data);
          } catch (err) {
             if (err instanceof Yup.ValidationError) {
                const errors = getValidationErros(err);
@@ -68,7 +69,7 @@ const SignUp: React.FC = () => {
             });
          }
       },
-      [addToast, history],
+      [addToast, signIn],
    );
 
    return (
