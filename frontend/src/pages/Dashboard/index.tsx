@@ -109,8 +109,14 @@ const Dashboard: React.FC = () => {
          },
       }).then((response) => {
          const appointmentsFormatted = response.data.map((appointment) => {
+            if (appointment.user.avatar_url === null) {
+               appointment.user.avatar_url =
+                  'https://api.adorable.io/avatars/800/b3c5f6c3fdd85798590175b953e10217.png';
+            }
+
             return {
                ...appointment,
+
                hourFormatted: format(parseISO(appointment.date), 'HH:mm'),
             };
          });

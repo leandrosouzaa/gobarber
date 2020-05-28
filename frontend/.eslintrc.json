@@ -29,6 +29,7 @@
    "rules": {
       "no-unused-expressions": "off",
       "no-alert":"off",
+      "no-param-reassign": "off",
       "react/jsx-props-no-spreading": "off",
       "prettier/prettier": "error",
       "react/prop-types": "off",
