@@ -108,4 +108,4 @@ Foram utilizadas as seguintes dependências para o desenvolvimento do projeto
    </tr>
  </table>
 <br />
-<p align="center">Feito com 🖤 por <b>Leandro Souza</b></p>
+<p align="center">Feito com 🖤 by <b>Leandro Souza</b></p>
