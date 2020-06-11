@@ -18,13 +18,20 @@ interface SignInCredentials {
 interface AuthContextData {
    signIn(credentials: SignInCredentials): Promise<void>;
    signOut(): void;
-   user: object;
+   user: User;
    loading: boolean;
 }
 
 interface AuthState {
    token: string;
-   user: object;
+   user: User;
+}
+
+interface User {
+   id: string;
+   name: string;
+   email: string;
+   avatar_url: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
