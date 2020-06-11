@@ -13,6 +13,7 @@ const App = createStackNavigator();
 
 const AppRoutes: React.FC = () => (
    <App.Navigator
+      initialRouteName="Dashboard"
       screenOptions={{
          headerShown: false,
          cardStyle: { backgroundColor: '#312e38' },
