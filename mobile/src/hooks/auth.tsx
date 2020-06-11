@@ -64,6 +64,11 @@ const AuthProvider: React.FC = ({ children }) => {
       });
       const { token, user } = response.data;
 
+      if (user.avatar_url === null) {
+         user.avatar_url =
+            'https://api.adorable.io/avatars/800/b3c5f6c3fdd85798590175b953e10217.png';
+      }
+
       await AsyncStorage.multiSet([
          ['@GoBarber:token', token],
          ['@GoBarber:user', JSON.stringify(user)],
