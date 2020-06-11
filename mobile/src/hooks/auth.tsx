@@ -49,6 +49,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
          if (token[1] && user[1]) {
             setData({ token: token[1], user: JSON.parse(user[1]) });
+            api.defaults.headers.authorization = `Bearer ${token[1]}`;
          }
 
          setLoading(false);
@@ -68,6 +69,8 @@ const AuthProvider: React.FC = ({ children }) => {
          user.avatar_url =
             'https://api.adorable.io/avatars/800/b3c5f6c3fdd85798590175b953e10217.png';
       }
+
+      api.defaults.headers.authorization = `Bearer ${token}`;
 
       await AsyncStorage.multiSet([
          ['@GoBarber:token', token],
