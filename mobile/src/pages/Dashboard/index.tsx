@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { StatusBar, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/Feather';
@@ -31,12 +31,13 @@ export interface ProviderProps {
 
 const Dashboard: React.FC = () => {
    const [providers, setProviders] = useState<ProviderProps[]>([]);
-   const { user } = useAuth();
+   const { user, signOut } = useAuth();
 
    const { navigate } = useNavigation();
 
    const navigateToProfile = useCallback(() => {
-      navigate('Profile');
+      // navigate('Profile');
+      signOut();
    }, [navigate]);
 
    const navigateToCreateAppointment = useCallback(
@@ -54,8 +55,6 @@ const Dashboard: React.FC = () => {
 
    return (
       <Container>
-         <StatusBar barStyle="light-content" backgroundColor="#28262e" />
-
          <Header>
             <HeaderTitle>
                Bem Vindo, {'\n'}
