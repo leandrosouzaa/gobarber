@@ -55,6 +55,7 @@ const AuthProvider: React.FC = ({ children }) => {
          email,
          password,
       });
+
       const { token, user } = response.data;
 
       if (user.avatar_url === null) {
@@ -67,7 +68,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
       api.defaults.headers.authorization = `Bearer ${token}`;
 
-      setData({ token, user });
+      setData({ user, token });
    }, []);
 
    const signOut = useCallback(() => {
