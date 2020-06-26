@@ -1,7 +1,9 @@
 node_modules
+dist/
 
-tmp/*
-: tmp/gitkeep
-.env
+tmp/uploads/*
+!tmp/uploads/.gitkeep
+coverage
 
 ormconfig.json
+.env
