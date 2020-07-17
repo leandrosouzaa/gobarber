@@ -19,6 +19,12 @@ buildscript {
     }
 }
 
+ext {
+   react = [
+      nodeExecutableAndArgs:  ["/home/leeandro/.nvm/versions/node/v14.4.0/bin/node"]
+   ]
+}
+
 allprojects {
     repositories {
         mavenLocal()
